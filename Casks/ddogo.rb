@@ -3,7 +3,7 @@ cask "ddogo" do
   name "ddogo"
   desc "Lightweight CLI for consuming Datadog logs."
   homepage "https://github.com/gabrielmbmb/ddogo"
-  version "0.1.1"
+  version "0.1.2"
 
   livecheck do
     skip "Auto-generated on release."
@@ -14,27 +14,27 @@ cask "ddogo" do
   on_macos do
     on_intel do
       url "https://github.com/gabrielmbmb/ddogo/releases/download/v#{version}/ddogo_#{version}_darwin_amd64.tar.gz"
-      sha256 "8296506f44b09caa24c58ff34e1edf4d98f5b151cefb86f270660c9e7484955e"
+      sha256 "08b933d1c2957abfe0d1c989e34a2b08e3fb8b52931b99596f6ff012f858df74"
     end
     on_arm do
       url "https://github.com/gabrielmbmb/ddogo/releases/download/v#{version}/ddogo_#{version}_darwin_arm64.tar.gz"
-      sha256 "c72484b74d71231a8196a9073957819d6c116173bdbc144eedbf8a9d62db8047"
+      sha256 "a606030ea5d7901b616288fb821a8a6750ac272c8b5e6025a89f963f24b79fac"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/gabrielmbmb/ddogo/releases/download/v#{version}/ddogo_#{version}_linux_amd64.tar.gz"
-      sha256 "5719576472f4592ae358def376771116aa2df597b94b574e8f961385b17f8a09"
+      sha256 "8f3c2855ce448c29ed4e1d940156ba381665e336f1b501e60d89437a8db23131"
     end
     on_arm do
       url "https://github.com/gabrielmbmb/ddogo/releases/download/v#{version}/ddogo_#{version}_linux_arm64.tar.gz"
-      sha256 "05479d3ab8c275187ccb2c9eeebe8986970dea36d8ae9d19e9e27645ef3b5c83"
+      sha256 "920103237fee84ae10490f588d92461ec873c72791d192eedb30c79d464ff799"
     end
   end
 
   postflight do
-    system_command "/bin/sh", args: ["-c", "xattr -d com.apple.quarantine '#{bin}/ddogo' 2>/dev/null || true"]
+    system_command "/bin/sh", args: ["-c", "xattr -d com.apple.quarantine '#{staged_path}/ddogo' 2>/dev/null || true"]
   end
 
   # No zap stanza required
